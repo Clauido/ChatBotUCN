@@ -1,0 +1,2 @@
+- Se modificó el nombre del documento "Reglamento-General-de-Docencia-de-Pregrado 2024 2" a "Reglamento-General-de-Docencia-de-Pregrado-2024-2"
+- Se pasaron los pdf escaneados a pdf editables(IlovePDF)
