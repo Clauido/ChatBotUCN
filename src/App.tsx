@@ -1,10 +1,12 @@
+"use client";
+
 import { useState, useRef, useEffect } from "react";
-import { ThemeProvider } from "./components/theme-provider";
-import { ScrollArea } from "./components/ui/scroll-area";
-import { Avatar, AvatarFallback, AvatarImage } from "./components/ui/avatar";
-import { Input } from "./components/ui/input";
-import { Button } from "./components/ui/button";
 import { Send } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { ThemeProvider } from "./components/theme-provider";
 
 type Message = {
   id: number;
@@ -14,19 +16,17 @@ type Message = {
 
 export default function FullScreenChat() {
   const [messages, setMessages] = useState<Message[]>([
-    { id: 1, content: "Hello! How can I assist you today?", sender: "bot" },
+    { id: 1, content: "¡Hola! ¿Cómo puedo ayudarte hoy?", sender: "bot" },
   ]);
   const [input, setInput] = useState("");
   const scrollAreaRef = useRef<HTMLDivElement>(null);
+  const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (scrollAreaRef.current) {
-      scrollAreaRef.current.scrollTop = scrollAreaRef.current.scrollHeight;
-    }
+    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  const handleSend = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSend = () => {
     if (input.trim()) {
       const userMessage: Message = {
         id: messages.length + 1,
@@ -39,8 +39,7 @@ export default function FullScreenChat() {
       setTimeout(() => {
         const botMessage: Message = {
           id: messages.length + 2,
-          content:
-            "I'm a simple bot. I don't have real responses yet, but I'm here to chat!",
+          content: "Soy un simple bot. ¡No tengo respuestas reales aún!",
           sender: "bot",
         };
         setMessages((prevMessages) => [...prevMessages, botMessage]);
@@ -50,11 +49,18 @@ export default function FullScreenChat() {
     }
   };
 
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      handleSend();
+    }
+  };
+
   return (
     <ThemeProvider>
       <div className="flex flex-col h-screen bg-background">
         <header className="flex items-center justify-between p-4 border-b">
-          <h1 className="text-2xl font-bold">ChatUCN</h1>
+          <h1 className="text-2xl font-bold">ChatGPT</h1>
         </header>
         <ScrollArea className="flex-grow p-4" ref={scrollAreaRef}>
           <div className="max-w-2xl mx-auto">
@@ -77,8 +83,8 @@ export default function FullScreenChat() {
                     <AvatarImage
                       src={
                         message.sender === "user"
-                          ? "/user-avatar.png"
-                          : "/ai-avatar.png"
+                          ? "../public/user.jpg"
+                          : "../public/bot.png"
                       }
                     />
                   </Avatar>
@@ -94,25 +100,24 @@ export default function FullScreenChat() {
                 </div>
               </div>
             ))}
+            <div ref={bottomRef} />
           </div>
         </ScrollArea>
         <footer className="p-4">
-          <form
-            onSubmit={handleSend}
-            className="flex items-center space-x-2 max-w-2xl mx-auto"
-          >
+          <div className="flex items-center space-x-2 max-w-2xl mx-auto">
             <Input
               type="text"
-              placeholder="Envía un mensaje a ChatUCN"
+              placeholder="Envía un mensaje a ChatGPT"
               value={input}
               onChange={(e) => setInput(e.target.value)}
+              onKeyPress={handleKeyPress}
               className="flex-grow"
             />
-            <Button type="submit" size="icon">
+            <Button type="submit" size="icon" onClick={handleSend}>
               <Send className="h-4 w-4" />
               <span className="sr-only">Send</span>
             </Button>
-          </form>
+          </div>
         </footer>
       </div>
     </ThemeProvider>
