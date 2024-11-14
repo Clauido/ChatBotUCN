@@ -21,7 +21,7 @@ CHUNK_OVERLAP = 500
 
 moder_for_embedding = FastEmbedEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
 
-direc = 'C:/Users/claud\Desktop/Cursos/LearningLangChain/Deploy/PDF'  # tener ojo con esta ruta, porque o sino no se hace el embeddign correcto
+direc = './PDF'  # tener ojo con esta ruta, porque o sino no se hace el embeddign correcto
 loader = PyPDFDirectoryLoader(direc)
 
 pdfs = loader.load()
@@ -34,5 +34,5 @@ text_splitter = RecursiveCharacterTextSplitter(chunk_size=CHUNK_SIZE, chunk_over
 
 chunks = text_splitter.split_documents(pdfs)
 
-db = PGVector.from_documents(chunks,moder_for_embedding,connection=connection)
-
+PGVector.from_documents(chunks,moder_for_embedding,connection=connection)
+print("Ready poblate")
