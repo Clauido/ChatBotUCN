@@ -46,6 +46,9 @@ export default function ChatBot() {
   const [feedback, setFeedback] = useState<{
     [key: string]: "up" | "down" | null;
   }>({});
+  const [showWelcome, setShowWelcome] = useState(true);
+  const welcomeText = "¿En qué puedo ayudarte?";
+  const [displayText, setDisplayText] = useState("");
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
@@ -53,7 +56,8 @@ export default function ChatBot() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (input.trim()) {
+    if (input.trim() && !isLoading) {
+      setShowWelcome(false);
       const newMessage: Message = {
         id: Date.now().toString(),
         content: input,
@@ -80,7 +84,7 @@ export default function ChatBot() {
       };
       setMessages((prev) => [...prev, newMessage]);
       setIsLoading(false);
-    }, 6000);
+    }, 2000);
   };
 
   const handleFeedback = (messageId: string, type: "up" | "down") => {
@@ -100,97 +104,137 @@ export default function ChatBot() {
     }
   }, [messages]);
 
+  useEffect(() => {
+    if (!showWelcome) return;
+
+    let i = 0;
+    const typingInterval = setInterval(() => {
+      if (i < welcomeText.length) {
+        setDisplayText(welcomeText.slice(0, i + 1));
+        i++;
+      } else {
+        clearInterval(typingInterval);
+      }
+    }, 40);
+
+    return () => clearInterval(typingInterval);
+  }, [showWelcome]);
+
   return (
     <div className="flex flex-col h-screen py-12 max-w-3xl mx-auto p-4">
-      <div
-        id="chat-container"
-        className="flex-1 overflow-y-auto space-y-4 pb-4 hide-scrollbar"
-      >
-        <div className="flex">
-          <div className="flex items-start mr-2">
-            <Avatar src="/image.png" fallback="AI" />
-          </div>
-          <div
-            className={`rounded-3xl py-2 px-5 max-h-10
-                text-white
-            `}
-          >
-            <p>¡Hola! ¿En qué puedo ayudarte hoy?</p>
-          </div>
+      {showWelcome ? (
+        <div className="flex-1 flex flex-col items-center justify-center space-y-8">
+          <h1 className="text-4xl font-bold text-white text-center">
+            {displayText}
+            <span className="animate-blink">|</span>
+          </h1>
+          <form onSubmit={handleSubmit} className="w-full max-w-2xl">
+            <div className="flex p-1 items-center w-full rounded-full bg-zinc-700">
+              <Input
+                value={input}
+                onChange={handleInputChange}
+                placeholder="Escribe un mensaje..."
+                aria-label="Type a message"
+                disabled={isLoading}
+              />
+              <Button
+                type="submit"
+                aria-label="Send message"
+                disabled={isLoading}
+                className={`p-2 text-white rounded-full transition-colors ${
+                  input.trim() ? "bg-white" : "bg-zinc-500"
+                }`}
+              >
+                <Send size={18} className="stroke-zinc-700" />
+              </Button>
+            </div>
+          </form>
         </div>
-        {messages.map((message) => (
+      ) : (
+        <>
           <div
-            key={message.id}
-            className={`flex ${message.role === "user" ? "justify-end" : ""}`}
+            id="chat-container"
+            className="flex-1 overflow-y-auto space-y-4 pb-4 hide-scrollbar"
           >
-            {message.role !== "user" && (
-              <div className="flex items-start mr-2 pt-3">
-                <Avatar src="/image.png" fallback="AI" />
+            {messages.map((message) => (
+              <div
+                key={message.id}
+                className={`flex ${
+                  message.role === "user" ? "justify-end" : ""
+                }`}
+              >
+                {message.role !== "user" && (
+                  <div className="flex items-start mr-2 pt-3">
+                    <Avatar src="/image.png" fallback="AI" />
+                  </div>
+                )}
+                <div
+                  className={`rounded-3xl py-2 px-5 ${
+                    message.role === "user"
+                      ? "bg-zinc-700 text-white max-w-[75%]"
+                      : "text-white"
+                  }`}
+                >
+                  <p>{message.content}</p>
+                  {message.role === "assistant" && (
+                    <div className="flex justify-start mt-2">
+                      <Button onClick={() => handleFeedback(message.id, "up")}>
+                        <ThumbsUp
+                          size={18}
+                          className={`${
+                            feedback[message.id] === "up" ? "fill-white" : ""
+                          }`}
+                        />
+                      </Button>
+                      <Button
+                        onClick={() => handleFeedback(message.id, "down")}
+                      >
+                        <ThumbsDown
+                          size={18}
+                          className={`${
+                            feedback[message.id] === "down" ? "fill-white" : ""
+                          }`}
+                        />
+                      </Button>
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+            {isLoading && (
+              <div className="flex justify-start">
+                <div className="flex items-end mr-2">
+                  <Avatar src="/image.png" fallback="AI" />
+                </div>
+                <div className="bg-zinc-800 rounded-full p-4">
+                  <ThinkingAnimation />
+                </div>
               </div>
             )}
-            <div
-              className={`rounded-3xl py-2 px-5 ${
-                message.role === "user"
-                  ? "bg-zinc-700 text-white max-w-[75%]"
-                  : "text-white"
-              }`}
-            >
-              <p>{message.content}</p>
-              {message.role === "assistant" && (
-                <div className="flex justify-start mt-2">
-                  <Button onClick={() => handleFeedback(message.id, "up")}>
-                    <ThumbsUp
-                      size={18}
-                      className={`${
-                        feedback[message.id] === "up" ? "fill-white" : ""
-                      }`}
-                    />
-                  </Button>
-                  <Button onClick={() => handleFeedback(message.id, "down")}>
-                    <ThumbsDown
-                      size={18}
-                      className={`${
-                        feedback[message.id] === "down" ? "fill-white" : ""
-                      }`}
-                    />
-                  </Button>
-                </div>
-              )}
-            </div>
           </div>
-        ))}
-        {isLoading && (
-          <div className="flex justify-start">
-            <div className="flex items-end mr-2">
-              <Avatar src="/image.png" fallback="AI" />
+          <form onSubmit={handleSubmit} className="p-1 flex space-x-2 mt-5">
+            <div className="flex p-1 items-center w-full rounded-full bg-zinc-700">
+              <Input
+                value={input}
+                onChange={handleInputChange}
+                placeholder="Escribe un mensaje..."
+                aria-label="Type a message"
+                disabled={isLoading}
+              />
+              <Button
+                type="submit"
+                aria-label="Send message"
+                disabled={isLoading}
+                className={`p-2 text-white rounded-full transition-colors ${
+                  input.trim() ? "bg-white" : "bg-zinc-500"
+                }`}
+              >
+                <Send size={18} className="stroke-zinc-700" />
+              </Button>
             </div>
-            <div className="bg-zinc-800 rounded-full p-4">
-              <ThinkingAnimation />
-            </div>
-          </div>
-        )}
-      </div>
-      <form onSubmit={handleSubmit} className="p-1 flex space-x-2 mt-5">
-        <div className="flex p-1 items-center w-full rounded-full bg-zinc-700">
-          <Input
-            value={input}
-            onChange={handleInputChange}
-            placeholder="Escribe un mensaje..."
-            aria-label="Type a message"
-            disabled={isLoading}
-          />
-          <Button
-            type="submit"
-            aria-label="Send message"
-            disabled={isLoading}
-            className={`p-2 text-white rounded-full transition-colors ${
-              input.trim() ? "bg-white" : "bg-zinc-500"
-            }`}
-          >
-            <Send size={18} className="stroke-zinc-700" />
-          </Button>
-        </div>
-      </form>
+          </form>
+        </>
+      )}
     </div>
   );
 }
