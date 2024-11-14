@@ -80,7 +80,7 @@ export default function ChatBot() {
       };
       setMessages((prev) => [...prev, newMessage]);
       setIsLoading(false);
-    }, 1000); // Simulate a delay before responding
+    }, 6000);
   };
 
   const handleFeedback = (messageId: string, type: "up" | "down") => {
@@ -181,9 +181,11 @@ export default function ChatBot() {
           <Button
             type="submit"
             aria-label="Send message"
-            className="p-2 bg-zinc-500 text-white rounded-full "
+            className={`p-2 text-white rounded-full transition-colors ${
+              input.trim() ? "bg-white" : "bg-zinc-500"
+            }`}
           >
-            <Send size={18} />
+            <Send size={18} className="stroke-zinc-700" />
           </Button>
         </div>
       </form>
