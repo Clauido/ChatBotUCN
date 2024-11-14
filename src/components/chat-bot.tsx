@@ -126,7 +126,6 @@ export default function ChatBot() {
         <div className="flex-1 flex flex-col items-center justify-center space-y-8">
           <h1 className="text-4xl font-bold text-white text-center">
             {displayText}
-            <span className="animate-blink">|</span>
           </h1>
           <form onSubmit={handleSubmit} className="w-full max-w-2xl">
             <div className="flex p-1 items-center w-full rounded-full bg-zinc-700">
