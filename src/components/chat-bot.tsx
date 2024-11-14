@@ -177,10 +177,12 @@ export default function ChatBot() {
             onChange={handleInputChange}
             placeholder="Escribe un mensaje..."
             aria-label="Type a message"
+            disabled={isLoading}
           />
           <Button
             type="submit"
             aria-label="Send message"
+            disabled={isLoading}
             className={`p-2 text-white rounded-full transition-colors ${
               input.trim() ? "bg-white" : "bg-zinc-500"
             }`}
