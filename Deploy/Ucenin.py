@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException, WebSocket, WebSocketDisconnect
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from langchain_ollama import OllamaLLM
 import os
@@ -19,6 +20,15 @@ PGV_DATABASE_NAME=os.getenv("PGV_DATABASE_NAME")
 EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL")
 
 app = FastAPI()
+
+# CORS middleware. Restringir acceso antes de producción
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 ollama_model = OllamaLLM(model='ucenin')
 
