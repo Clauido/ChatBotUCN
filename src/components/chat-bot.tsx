@@ -54,7 +54,7 @@ export default function ChatBot() {
     setInput(e.target.value);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (input.trim() && !isLoading) {
       setShowWelcome(false);
@@ -66,27 +66,33 @@ export default function ChatBot() {
       setMessages((prev) => [...prev, newMessage]);
       setInput("");
       setIsLoading(true);
-      //simulateResponse(input);
-      simulateResponse();
-    }
-  };
 
-  //const simulateResponse = (userInput: string) => {
-  const simulateResponse = () => {
-    setTimeout(() => {
-      const responses = [
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      ];
-      const randomResponse =
-        responses[Math.floor(Math.random() * responses.length)];
-      const newMessage: Message = {
-        id: Date.now().toString(),
-        content: randomResponse,
-        role: "assistant",
-      };
-      setMessages((prev) => [...prev, newMessage]);
-      setIsLoading(false);
-    }, 2000);
+      try {
+        const response = await fetch("http://127.0.0.1:8000/generate", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ input }),
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          const assistantMessage: Message = {
+            id: Date.now().toString(),
+            content: data.response.result,
+            role: "assistant",
+          };
+          setMessages((prev) => [...prev, assistantMessage]);
+        } else {
+          console.error("Failed to fetch response");
+        }
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
   };
 
   const handleFeedback = (messageId: string, type: "up" | "down") => {
