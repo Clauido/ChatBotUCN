@@ -2,18 +2,18 @@ services:
   api:
     container_name: ucenin-api
     build:
-      path: ./api
+      context: ./api
       dockerfile: dockerfile
     restart: unless-stopped
     ports:
       - "8000:8000"
     environment:
-      - PGV_USER: "ucenin"
-      - PGV_PASSWORD: "password" #Match password!
-      - PGV_HOST: "ucening-pgvector"
-      - PGV_PORT: 5432
-      - PGV_DATABASE_NAME: "ucenin"
-      - EMBEDDING_MODEL: ""
+      PGV_USER: "ucenin"
+      PGV_PASSWORD: "password" #Match password!
+      PGV_HOST: "ucening-pgvector"
+      PGV_PORT: 5432
+      PGV_DATABASE_NAME: "ucenin"
+      EMBEDDING_MODEL: ""
     depends_on:
       - db-vector
     
@@ -26,15 +26,19 @@ services:
     volumes:
       - db-vector:/var/lib/postgresql/data
     environment:
-      - POSTGRES_USER: "ucenin"
-      - POSTGRES_PASSWORD: "password" #Change me!
-      - POSTGRES_DB: "ucenin"
+      POSTGRES_USER: "ucenin"
+      POSTGRES_PASSWORD: "password" #Change me!
+      POSTGRES_DB: "ucenin"
   
   model: 
     container_name: ucenin-ollama
     build: 
-      path: ./model
+      context: ./model
       dockerfile: dockerfile
     restart: unless-stopped
     #ports:           
     #  - "11434:11434"  #Only for dev
+
+volumes:
+  db-vector:
+    name: ucenin-db-vector
