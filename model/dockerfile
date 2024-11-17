@@ -1,0 +1,14 @@
+FROM ollama/ollama:0.4.2
+
+COPY wait4x /usr/local/bin/wait4x
+RUN chmod +x /usr/local/bin/wait4x
+
+COPY Modelfile .
+
+RUN nohup bash -c "ollama serve &" && wait4x http http://127.0.0.1:11434 && ollama create ucn-chatbot --file Modelfile
+
+EXPOSE 11434
+
+ENTRYPOINT ["/bin/ollama"]
+
+CMD ["serve"]
