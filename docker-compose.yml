@@ -9,7 +9,7 @@ services:
       - db-vector:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: "${PGV_USER}"
-      POSTGRES_PASSWORD: "${PGV_PASSWORD}" #Change me!
+      POSTGRES_PASSWORD: "${PGV_PASSWORD}"
       POSTGRES_DB: "${PGV_DATABASE_NAME}"
 
   api:
@@ -22,14 +22,14 @@ services:
       - "${API_PORT}:8000"
     environment:
       PGV_USER: "${PGV_USER}"
-      PGV_PASSWORD: "${PGV_PASSWORD}" #Match password!
-      PGV_HOST: "${PGV_HOST}"
-      PGV_PORT: "${PGV_PORT}"
+      PGV_PASSWORD: "${PGV_PASSWORD}"
+      PGV_HOST: "ucenin-pgvector"
+      PGV_PORT: 5432
       PGV_DATABASE_NAME: "${PGV_DATABASE_NAME}"
       EMBEDDING_MODEL: "${EMBEDDING_MODEL}"
       UCN_MODEL_NAME: "${UCN_MODEL_NAME}"
-      OLLAMA_PORT: ${OLLAMA_PORT}
-      OLLAMA_HOST: ${OLLAMA_HOST}
+      OLLAMA_PORT: 11434
+      OLLAMA_HOST: "ucening-ollama"
     depends_on:
       - db-vector
 
