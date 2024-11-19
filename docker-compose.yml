@@ -1,4 +1,17 @@
 services:
+  db-vector:
+    container_name: ucenin-pgvector
+    image: pgvector/pgvector:pg16
+    restart: unless-stopped
+    ports: #Only for dev!
+      - "${PGV_PORT}:5432"
+    volumes:
+      - db-vector:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: "${PGV_USER}"
+      POSTGRES_PASSWORD: "${PGV_PASSWORD}" #Change me!
+      POSTGRES_DB: "${PGV_DATABASE_NAME}"
+
   api:
     container_name: ucenin-api
     build:
@@ -6,38 +19,36 @@ services:
       dockerfile: dockerfile
     restart: unless-stopped
     ports:
-      - "8000:8000"
+      - "${API_PORT}:8000"
     environment:
-      PGV_USER: "ucenin"
-      PGV_PASSWORD: "password" #Match password!
-      PGV_HOST: "ucening-pgvector"
-      PGV_PORT: 5432
-      PGV_DATABASE_NAME: "ucenin"
-      EMBEDDING_MODEL: ""
+      PGV_USER: "${PGV_USER}"
+      PGV_PASSWORD: "${PGV_PASSWORD}" #Match password!
+      PGV_HOST: "${PGV_HOST}"
+      PGV_PORT: "${PGV_PORT}"
+      PGV_DATABASE_NAME: "${PGV_DATABASE_NAME}"
+      EMBEDDING_MODEL: "${EMBEDDING_MODEL}"
+      UCN_MODEL_NAME: "${UCN_MODEL_NAME}"
+      OLLAMA_PORT: ${OLLAMA_PORT}
+      OLLAMA_HOST: ${OLLAMA_HOST}
     depends_on:
       - db-vector
-    
-  db-vector: 
-    container_name: ucenin-pgvector
-    image: pgvector/pgvector:pg16
-    restart: unless-stopped
-    #ports:         #Only for dev!
-    #  - "5432:5432"
-    volumes:
-      - db-vector:/var/lib/postgresql/data
-    environment:
-      POSTGRES_USER: "ucenin"
-      POSTGRES_PASSWORD: "password" #Change me!
-      POSTGRES_DB: "ucenin"
-  
-  model: 
+
+  model:
     container_name: ucenin-ollama
-    build: 
+    build:
       context: ./model
       dockerfile: dockerfile
     restart: unless-stopped
-    #ports:           
-    #  - "11434:11434"  #Only for dev
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
+    ports:
+      - "${OLLAMA_PORT}:11434" #Only for dev
 
 volumes:
   db-vector:
