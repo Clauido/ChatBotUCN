@@ -5,7 +5,7 @@ RUN chmod +x /usr/local/bin/wait4x
 
 COPY Modelfile .
 
-RUN nohup bash -c "ollama serve &" && wait4x http http://127.0.0.1:11434 && ollama create ucenin --file Modelfile
+RUN nohup bash -c "ollama serve &" && wait4x http http://127.0.0.1:11434 && ollama create ucenin --file Modelfile && ollama rm ollama3.1
 
 EXPOSE 11434
 
