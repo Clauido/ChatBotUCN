@@ -67,7 +67,7 @@ async def stream(query):
         Contexto : {context}
         Pregunta Alumno: {query}    
     """
-
+    print(prompt)
     stream_gen = await loop.run_in_executor(None, model.stream, prompt)
     for response in stream_gen:
         print(response)
