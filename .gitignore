@@ -1,4 +1,5 @@
 /chroma_db_dir
+/Deploy
 /venv
 .devcontainer
 .env
