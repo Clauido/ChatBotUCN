@@ -1,27 +1,13 @@
+import asyncio
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from langchain_ollama import OllamaLLM
-import os
 from langchain_postgres.vectorstores import PGVector
-from dotenv import load_dotenv
 from langchain_community.embeddings.fastembed import FastEmbedEmbeddings
-import asyncio
-
-
-load_dotenv()
-
-PGV_USER=os.getenv("PGV_USER")
-PGV_PASSWORD=os.getenv("PGV_PASSWORD")
-PGV_HOST=os.getenv("PGV_HOST")
-PGV_PORT=os.getenv("PGV_PORT")
-PGV_DATABASE_NAME=os.getenv("PGV_DATABASE_NAME")    
-
-EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL")
-UCN_MODEL_NAME=os.getenv('UCN_MODEL_NAME')
-
-OLLAMA_HOST= os.getenv("OLLAMA_HOST")
-OLLAMA_PORT= int(os.getenv("OLLAMA_PORT"))
+from var import (PGV_USER,PGV_PASSWORD,PGV_HOST,PGV_PORT,PGV_DATABASE_NAME,
+                EMBEDDING_MODEL,UCN_MODEL_NAME,
+                OLLAMA_HOST,OLLAMA_PORT)
 
 moder_for_embedding = FastEmbedEmbeddings(model_name=EMBEDDING_MODEL)
 
