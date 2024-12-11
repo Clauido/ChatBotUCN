@@ -8,3 +8,7 @@ class HistoryItem(BaseModel):
 class WebSocketMessage(BaseModel):
     query: str
     history: List[HistoryItem]
+
+class BodyGenerate(BaseModel):
+    query: str
+    history: List[HistoryItem]

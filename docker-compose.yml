@@ -7,7 +7,7 @@ services:
       - "${PGV_PORT}:5432"
     volumes:
       - ./Database/dump.sql:/docker-entrypoint-initdb.d/init_pgvector.sql
-      - db-vector:/var/lib/postgresql/data #ver como lo haremos en producción para este
+      # - db-vector:/var/lib/postgresql/data #ver como lo haremos en producción para este
 
     environment:
       POSTGRES_USER: "${PGV_USER}"
@@ -52,6 +52,6 @@ services:
     ports:
       - "${OLLAMA_PORT}:11434" #Only for dev
 
-volumes:
-  db-vector:
-    name: ucenin-db-vector
+# volumes:
+#   db-vector:
+#     name: ucenin-db-vector

@@ -12,4 +12,5 @@ EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL")
 UCN_MODEL_NAME=os.getenv('UCN_MODEL_NAME')
 
 OLLAMA_HOST= os.getenv("OLLAMA_HOST")
-OLLAMA_PORT= int(os.getenv("OLLAMA_PORT"))
+OLLAMA_PORT= int(os.getenv("OLLAMA_PORT")) 
+url = f"http://localhost:{OLLAMA_PORT}/api/chat"
