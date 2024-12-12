@@ -4,4 +4,4 @@
 .devcontainer
 .env
 README.mine.md
-/_pycache_
+/api/__pycache__

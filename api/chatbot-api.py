@@ -23,18 +23,10 @@ app.add_middleware(
 @app.post("/chat")
 def proxy_request(item: BodyGenerate):
 
-    # formated_messages= format_ollama_messages()
-    context= get_context(item.query)
-    content=f"Este es tu contexto para responder la pregunta {context} y esta es la pregunta del estudiante: {item.query}"
-    print(content)
+    formated_messages= format_ollama_messages(item)
     data = {
         "model": UCN_MODEL_NAME,
-        "messages": [
-            {
-                "role":"user",
-                "content":content
-            }
-        ]
+        "messages": formated_messages
     }
 
     headers = {"Content-Type": "application/json"}
@@ -47,7 +39,9 @@ def proxy_request(item: BodyGenerate):
             for line in response.iter_lines():
                 if line:  
                     decoded_line = line.decode("utf-8")
-                    print(f"Line received: {decoded_line}")
+                    
+                    data = json.loads(decoded_line)
+                    print(f"Line received: {data["message"]}")
                     yield json.dumps({"response": json.loads(decoded_line)}) + "\n"
 
         return StreamingResponse(stream_response(), media_type="application/json")
@@ -79,8 +73,6 @@ async def websocket_endpoint(websocket: WebSocket):
 
 
 
-
 if __name__ == '__main__':
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
-

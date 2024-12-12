@@ -30,7 +30,7 @@ def get_context(query):
 def format_ollama_messages(body:BodyGenerate):
     history= body.history
     messages = []
-    
+    context= get_context(body.query)
     for item in history:
         messages.append({
             "role": "user",
@@ -40,8 +40,8 @@ def format_ollama_messages(body:BodyGenerate):
             "role": "assistant",
             "content": item.answer
         })
-
-    messages.append({"role":"user","content":item.query})
+    content=f"Este es tu contexto para responder la pregunta {context} y esta es la pregunta del estudiante: {body.query}"
+    messages.append({"role":"user","content":content})
     print(messages)
     return messages
 
@@ -49,7 +49,7 @@ def format_ollama_messages(body:BodyGenerate):
 #for websocket endpoint
 async def stream(query):
     loop = asyncio.get_event_loop()
-    context= get_context()
+    context= get_context(query)
 
     prompt = f"""
         Contexto : {context}
