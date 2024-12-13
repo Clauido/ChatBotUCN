@@ -35,25 +35,38 @@ services:
     depends_on:
       - db-vector
 
-  model:
-    container_name: ucenin-ollama
+  model-cpu:
+    profiles: ["cpu"]
+    container_name: ucenin-ollama-cpu
     build:
       context: ./model
       dockerfile: dockerfile
     restart: unless-stopped
+    ports:
+      - "${OLLAMA_PORT}:11434"
+    environment:
+      NVIDIA_DRIVER_CAPABILITIES: compute,utility
+
+  model-gpu:
+    profiles: ["gpu-nvidia"]
+    container_name: ucenin-ollama-gpu
+    build:
+      context: ./model
+      dockerfile: dockerfile
+    restart: unless-stopped
+    ports:
+      - "${OLLAMA_PORT}:11434"
     deploy:
       resources:
         reservations:
           devices:
-            - capabilities: [gpu]
-    environment:
-      - NVIDIA_VISIBLE_DEVICES=all
-      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
-    ports:
-      - "${OLLAMA_PORT}:11434" #Only for dev
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
 
-  frontend:
-    container_name: ucenin-frontend
+  frontend-cpu:
+    profiles: ["cpu"]
+    container_name: ucenin-frontend-cpu
     build:
       context: ./frontend
       dockerfile: Dockerfile
@@ -64,8 +77,23 @@ services:
     depends_on:
       - db-vector
       - api
-      - model
+      - model-cpu
 
-# volumes:
-#   db-vector:
-#     name: ucenin-db-vector
+  frontend-gpu:
+    profiles: ["gpu-nvidia"]
+    container_name: ucenin-frontend-gpu
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+    depends_on:
+      - db-vector
+      - api
+      - model-gpu
+
+volumes:
+  db-vector:
+    name: ucenin-db-vector
