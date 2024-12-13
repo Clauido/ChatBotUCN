@@ -13,7 +13,7 @@ PGV_PASSWORD=os.getenv("PGV_PASSWORD")
 PGV_HOST=os.getenv("PGV_HOST")
 PGV_PORT=os.getenv("PGV_PORT")
 PGV_DATABASE_NAME=os.getenv("PGV_DATABASE_NAME")
-connection = f'postgresql+psycopg://{PGV_USER}:{PGV_PASSWORD}@{PGV_HOST}:{PGV_PORT}/{PGV_DATABASE_NAME}'
+connection = f'postgresql+psycopg://{PGV_USER}:{PGV_PASSWORD}@localhost:{PGV_PORT}/{PGV_DATABASE_NAME}'
 
 CHUNK_SIZE = 2000
 CHUNK_OVERLAP = 500
@@ -21,7 +21,7 @@ CHUNK_OVERLAP = 500
 
 moder_for_embedding = FastEmbedEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
 
-direc = './PDF'  # tener ojo con esta ruta, porque o sino no se hace el embeddign correcto
+direc = './media/PDF'  # tener ojo con esta ruta, porque o sino no se hace el embeddign correcto
 loader = PyPDFDirectoryLoader(direc)
 
 pdfs = loader.load()
@@ -35,4 +35,4 @@ text_splitter = RecursiveCharacterTextSplitter(chunk_size=CHUNK_SIZE, chunk_over
 chunks = text_splitter.split_documents(pdfs)
 
 PGVector.from_documents(chunks,moder_for_embedding,connection=connection)
-print("Ready poblate")
+print("Total document loaded:",len(chunks))
