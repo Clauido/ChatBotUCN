@@ -93,11 +93,10 @@ export default function ChatBot() {
         let isFirstChunk = true;
 
         const response = await axios.post(
-          "http://localhost:11434/api/generate",
+          import.meta.env.API_URL,
           {
-            model: "llama3.1",
-            prompt: input,
-            stream: true
+            query: input, 
+            history: []
           },
           {
             responseType: 'text',
