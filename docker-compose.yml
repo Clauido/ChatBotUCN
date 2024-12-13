@@ -4,7 +4,7 @@ services:
     image: pgvector/pgvector:pg16
     restart: unless-stopped
     ports: #Only for dev!
-      - "${PGV_PORT}:5433"
+      - "${PGV_PORT}:5432"
     volumes:
       - ./Database/dump.sql:/docker-entrypoint-initdb.d/init_pgvector.sql
       # - db-vector:/var/lib/postgresql/data #ver como lo haremos en producción para este
