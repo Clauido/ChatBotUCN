@@ -3,6 +3,12 @@
 import { useState, useEffect } from "react";
 import { ThumbsUp, ThumbsDown, Send } from "lucide-react";
 import axios from "axios";
+import { marked } from 'marked';
+
+marked.setOptions({
+  breaks: true,
+  gfm: true,
+});
 
 type Message = {
   id: string;
@@ -39,6 +45,19 @@ const Input = ({ ...props }: React.InputHTMLAttributes<HTMLInputElement>) => (
     className="p-3 pl-6 rounded-full flex-1 bg-inherit text-white overflow-hidden text-ellipsis focus:outline-none"
   />
 );
+
+const MessageContent = ({ content, role }: { content: string; role: "user" | "assistant" }) => {
+  if (role === "assistant") {
+    const htmlContent = marked.parse(content);
+    return (
+      <div 
+        className="prose prose-invert max-w-none"
+        dangerouslySetInnerHTML={{ __html: htmlContent }}
+      />
+    );
+  }
+  return <p className="whitespace-pre-wrap">{content}</p>;
+};
 
 export default function ChatBot() {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -221,7 +240,7 @@ export default function ChatBot() {
                       : "bg-zinc-800 text-white max-w-[75%]"
                   }`}
                 >
-                  <p className="whitespace-pre-wrap">{message.content}</p>
+                  <MessageContent content={message.content} role={message.role} />
                   {message.role === "assistant" && (
                     <div className="flex justify-start mt-2">
                       <Button onClick={() => handleFeedback(message.id, "up")}>
