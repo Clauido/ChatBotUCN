@@ -69,15 +69,9 @@ export default function ChatBot() {
       setIsLoading(true);
 
       try {
-        const assistantMessage: Message = {
-          id: Date.now().toString(),
-          content: "",
-          role: "assistant",
-        };
-        setMessages((prev) => [...prev, assistantMessage]);
-
         let accumulatedContent = "";
         let processedLines = new Set<string>();
+        let isFirstChunk = true;
 
         const response = await axios.post(
           "http://localhost:11434/api/generate",
@@ -96,22 +90,32 @@ export default function ChatBot() {
               const lines = responseText.split('\n').filter(Boolean);
               
               try {
-                // Procesar solo las líneas nuevas
                 lines.forEach((line: string) => {
                   if (!processedLines.has(line)) {
                     processedLines.add(line);
                     const parsedLine = JSON.parse(line);
                     if (parsedLine.response) {
-                      accumulatedContent += parsedLine.response;
-                      
-                      setMessages((prev) => {
-                        const updatedMessages = [...prev];
-                        const lastMessage = updatedMessages[updatedMessages.length - 1];
-                        if (lastMessage.role === "assistant") {
-                          lastMessage.content = accumulatedContent;
-                        }
-                        return updatedMessages;
-                      });
+                      if (isFirstChunk) {
+                        const assistantMessage: Message = {
+                          id: Date.now().toString(),
+                          content: parsedLine.response,
+                          role: "assistant",
+                        };
+                        setMessages(prev => [...prev, assistantMessage]);
+                        setIsLoading(false);
+                        isFirstChunk = false;
+                        accumulatedContent = parsedLine.response;
+                      } else {
+                        accumulatedContent += parsedLine.response;
+                        setMessages((prev) => {
+                          const updatedMessages = [...prev];
+                          const lastMessage = updatedMessages[updatedMessages.length - 1];
+                          if (lastMessage.role === "assistant") {
+                            lastMessage.content = accumulatedContent;
+                          }
+                          return updatedMessages;
+                        });
+                      }
                     }
                   }
                 });
@@ -127,7 +131,6 @@ export default function ChatBot() {
         }
       } catch (error) {
         console.error("Error during API call:", error);
-      } finally {
         setIsLoading(false);
       }
     }
