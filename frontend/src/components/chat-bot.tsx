@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { ThumbsUp, ThumbsDown, Send } from "lucide-react";
+import axios from "axios";
 
 type Message = {
   id: string;
@@ -68,27 +69,64 @@ export default function ChatBot() {
       setIsLoading(true);
 
       try {
-        const response = await fetch("http://127.0.0.1:8000/generate", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ input }),
-        });
+        const assistantMessage: Message = {
+          id: Date.now().toString(),
+          content: "",
+          role: "assistant",
+        };
+        setMessages((prev) => [...prev, assistantMessage]);
 
-        if (response.ok) {
-          const data = await response.json();
-          const assistantMessage: Message = {
-            id: Date.now().toString(),
-            content: data.response.result,
-            role: "assistant",
-          };
-          setMessages((prev) => [...prev, assistantMessage]);
-        } else {
+        let accumulatedContent = "";
+        let processedLines = new Set<string>();
+
+        const response = await axios.post(
+          "http://localhost:11434/api/generate",
+          {
+            model: "llama3.1",
+            prompt: input,
+            stream: true
+          },
+          {
+            responseType: 'text',
+            headers: {
+              "Content-Type": "application/json",
+            },
+            onDownloadProgress: (progressEvent) => {
+              const responseText = progressEvent.event.target.responseText;
+              const lines = responseText.split('\n').filter(Boolean);
+              
+              try {
+                // Procesar solo las líneas nuevas
+                lines.forEach((line: string) => {
+                  if (!processedLines.has(line)) {
+                    processedLines.add(line);
+                    const parsedLine = JSON.parse(line);
+                    if (parsedLine.response) {
+                      accumulatedContent += parsedLine.response;
+                      
+                      setMessages((prev) => {
+                        const updatedMessages = [...prev];
+                        const lastMessage = updatedMessages[updatedMessages.length - 1];
+                        if (lastMessage.role === "assistant") {
+                          lastMessage.content = accumulatedContent;
+                        }
+                        return updatedMessages;
+                      });
+                    }
+                  }
+                });
+              } catch (error) {
+                // Ignore parse errors for incomplete chunks
+              }
+            },
+          }
+        );
+
+        if (response.status !== 200) {
           console.error("Failed to fetch response");
         }
       } catch (error) {
-        console.error(error);
+        console.error("Error during API call:", error);
       } finally {
         setIsLoading(false);
       }
@@ -166,9 +204,7 @@ export default function ChatBot() {
             {messages.map((message) => (
               <div
                 key={message.id}
-                className={`flex ${
-                  message.role === "user" ? "justify-end" : ""
-                }`}
+                className={`flex ${message.role === "user" ? "justify-end" : ""}`}
               >
                 {message.role !== "user" && (
                   <div className="flex items-start mr-2 pt-3">
@@ -179,28 +215,22 @@ export default function ChatBot() {
                   className={`rounded-3xl py-2 px-5 ${
                     message.role === "user"
                       ? "bg-zinc-700 text-white max-w-[75%]"
-                      : "text-white"
+                      : "bg-zinc-800 text-white max-w-[75%]"
                   }`}
                 >
-                  <p>{message.content}</p>
+                  <p className="whitespace-pre-wrap">{message.content}</p>
                   {message.role === "assistant" && (
                     <div className="flex justify-start mt-2">
                       <Button onClick={() => handleFeedback(message.id, "up")}>
                         <ThumbsUp
                           size={18}
-                          className={`${
-                            feedback[message.id] === "up" ? "fill-white" : ""
-                          }`}
+                          className={`${feedback[message.id] === "up" ? "fill-white" : ""}`}
                         />
                       </Button>
-                      <Button
-                        onClick={() => handleFeedback(message.id, "down")}
-                      >
+                      <Button onClick={() => handleFeedback(message.id, "down")}>
                         <ThumbsDown
                           size={18}
-                          className={`${
-                            feedback[message.id] === "down" ? "fill-white" : ""
-                          }`}
+                          className={`${feedback[message.id] === "down" ? "fill-white" : ""}`}
                         />
                       </Button>
                     </div>
