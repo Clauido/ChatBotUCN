@@ -112,19 +112,19 @@ export default function ChatBot() {
                   if (!processedLines.has(line)) {
                     processedLines.add(line);
                     const parsedLine = JSON.parse(line);
-                    if (parsedLine.response) {
+                    if (parsedLine.response.message.content) {
                       if (isFirstChunk) {
                         const assistantMessage: Message = {
                           id: Date.now().toString(),
-                          content: parsedLine.response,
+                          content: parsedLine.response.message.content,
                           role: "assistant",
                         };
                         setMessages(prev => [...prev, assistantMessage]);
                         setIsLoading(false);
                         isFirstChunk = false;
-                        accumulatedContent = parsedLine.response;
+                        accumulatedContent = parsedLine.response.message.content;
                       } else {
-                        accumulatedContent += parsedLine.response;
+                        accumulatedContent += parsedLine.response.message.content;
                         setMessages((prev) => {
                           const updatedMessages = [...prev];
                           const lastMessage = updatedMessages[updatedMessages.length - 1];
@@ -186,7 +186,7 @@ export default function ChatBot() {
 
     return () => clearInterval(typingInterval);
   }, [showWelcome]);
-
+  
   return (
     <div className="flex flex-col h-screen py-12 max-w-3xl mx-auto p-4">
       {showWelcome ? (
@@ -221,7 +221,7 @@ export default function ChatBot() {
           <div
             id="chat-container"
             className="flex-1 overflow-y-auto space-y-4 pb-4 hide-scrollbar"
-          >
+          > 
             {messages.map((message) => (
               <div
                 key={message.id}
