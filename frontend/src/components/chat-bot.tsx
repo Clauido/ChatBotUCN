@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { ThumbsUp, ThumbsDown, Send } from "lucide-react";
 import axios from "axios";
-import { marked } from 'marked';
+import { marked } from "marked";
 
 marked.setOptions({
   breaks: true,
@@ -18,11 +18,7 @@ type Message = {
 
 const Avatar = ({ src, fallback }: { src: string; fallback: string }) => (
   <div className="w-9 h-9 rounded-full bg-gray-300 flex items-center justify-center">
-    {src ? (
-      <img src={src} alt="avatar" className="w-full h-full rounded-full" />
-    ) : (
-      fallback
-    )}
+    {src ? <img src={src} alt="avatar" className="w-full h-full rounded-full" /> : fallback}
   </div>
 );
 
@@ -31,10 +27,7 @@ const Button = ({
   className,
   ...props
 }: React.ButtonHTMLAttributes<HTMLButtonElement>) => (
-  <button
-    {...props}
-    className={`p-2 mr-3 rounded-full text-white ${className}`}
-  >
+  <button {...props} className={`p-2 mr-3 rounded-full text-white ${className}`}>
     {children}
   </button>
 );
@@ -50,7 +43,7 @@ const MessageContent = ({ content, role }: { content: string; role: "user" | "as
   if (role === "assistant") {
     const htmlContent = marked.parse(content);
     return (
-      <div 
+      <div
         className="prose prose-invert max-w-none"
         dangerouslySetInnerHTML={{ __html: htmlContent }}
       />
@@ -93,38 +86,43 @@ export default function ChatBot() {
         let isFirstChunk = true;
 
         const response = await axios.post(
-          import.meta.env.API_URL,
+          "http://localhost:8000/chat",
           {
-            query: input, 
-            history: []
+            query: input,
+            history: [],
           },
           {
-            responseType: 'text',
+            responseType: "text",
             headers: {
               "Content-Type": "application/json",
             },
             onDownloadProgress: (progressEvent) => {
               const responseText = progressEvent.event.target.responseText;
-              const lines = responseText.split('\n').filter(Boolean);
-              
+              const lines = responseText.split("\n").filter(Boolean);
+
               try {
                 lines.forEach((line: string) => {
                   if (!processedLines.has(line)) {
                     processedLines.add(line);
                     const parsedLine = JSON.parse(line);
-                    if (parsedLine.response) {
+
+                    if (parsedLine.response && parsedLine.response.message) {
+                      const messageContent = parsedLine.response.message.content;
+                      const isDone = parsedLine.response.done;
+
+                      // Si es el primer fragmento, agrega el mensaje
                       if (isFirstChunk) {
                         const assistantMessage: Message = {
                           id: Date.now().toString(),
-                          content: parsedLine.response,
+                          content: messageContent,
                           role: "assistant",
                         };
-                        setMessages(prev => [...prev, assistantMessage]);
+                        setMessages((prev) => [...prev, assistantMessage]);
                         setIsLoading(false);
                         isFirstChunk = false;
-                        accumulatedContent = parsedLine.response;
+                        accumulatedContent = messageContent;
                       } else {
-                        accumulatedContent += parsedLine.response;
+                        accumulatedContent += messageContent;
                         setMessages((prev) => {
                           const updatedMessages = [...prev];
                           const lastMessage = updatedMessages[updatedMessages.length - 1];
@@ -134,11 +132,16 @@ export default function ChatBot() {
                           return updatedMessages;
                         });
                       }
+
+                      // Si la respuesta está completa, cambia el estado
+                      if (isDone) {
+                        setIsLoading(false);
+                      }
                     }
                   }
                 });
               } catch (error) {
-                // Ignore parse errors for incomplete chunks
+                // Ignora errores de parseo para fragmentos incompletos
               }
             },
           }
@@ -191,9 +194,7 @@ export default function ChatBot() {
     <div className="flex flex-col h-screen py-12 max-w-3xl mx-auto p-4">
       {showWelcome ? (
         <div className="flex-1 flex flex-col items-center justify-center space-y-8">
-          <h1 className="text-4xl font-bold text-white text-center">
-            {displayText}
-          </h1>
+          <h1 className="text-4xl font-bold text-white text-center">{displayText}</h1>
           <form onSubmit={handleSubmit} className="w-full max-w-2xl">
             <div className="flex p-1 items-center w-full rounded-full bg-zinc-700">
               <Input
@@ -209,8 +210,7 @@ export default function ChatBot() {
                 disabled={isLoading}
                 className={`p-2 text-white rounded-full transition-colors ${
                   input.trim() ? "bg-white" : "bg-zinc-500"
-                }`}
-              >
+                }`}>
                 <Send size={18} className="stroke-zinc-700" />
               </Button>
             </div>
@@ -218,15 +218,11 @@ export default function ChatBot() {
         </div>
       ) : (
         <>
-          <div
-            id="chat-container"
-            className="flex-1 overflow-y-auto space-y-4 pb-4 hide-scrollbar"
-          >
+          <div id="chat-container" className="flex-1 overflow-y-auto space-y-4 pb-4 hide-scrollbar">
             {messages.map((message) => (
               <div
                 key={message.id}
-                className={`flex ${message.role === "user" ? "justify-end" : ""}`}
-              >
+                className={`flex ${message.role === "user" ? "justify-end" : ""}`}>
                 {message.role !== "user" && (
                   <div className="flex items-start mr-2 pt-3">
                     <Avatar src="/image.png" fallback="AI" />
@@ -237,8 +233,7 @@ export default function ChatBot() {
                     message.role === "user"
                       ? "bg-zinc-700 text-white max-w-[75%]"
                       : "bg-zinc-800 text-white max-w-[75%]"
-                  }`}
-                >
+                  }`}>
                   <MessageContent content={message.content} role={message.role} />
                   {message.role === "assistant" && (
                     <div className="flex justify-start mt-2">
@@ -285,8 +280,7 @@ export default function ChatBot() {
                 disabled={isLoading}
                 className={`p-2 text-white rounded-full transition-colors ${
                   input.trim() ? "bg-white" : "bg-zinc-500"
-                }`}
-              >
+                }`}>
                 <Send size={18} className="stroke-zinc-700" />
               </Button>
             </div>
