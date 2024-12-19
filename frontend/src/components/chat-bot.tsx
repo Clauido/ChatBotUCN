@@ -86,7 +86,7 @@ export default function ChatBot() {
         let isFirstChunk = true;
 
         const response = await axios.post(
-          "http://localhost:8000/chat",
+          `${window.API_URL}/chat`,
           {
             query: input,
             history: [],
@@ -105,24 +105,19 @@ export default function ChatBot() {
                   if (!processedLines.has(line)) {
                     processedLines.add(line);
                     const parsedLine = JSON.parse(line);
-
-                    if (parsedLine.response && parsedLine.response.message) {
-                      const messageContent = parsedLine.response.message.content;
-                      const isDone = parsedLine.response.done;
-
-                      // Si es el primer fragmento, agrega el mensaje
+                    if (parsedLine.response.message.content) {
                       if (isFirstChunk) {
                         const assistantMessage: Message = {
                           id: Date.now().toString(),
-                          content: messageContent,
+                          content: parsedLine.response.message.content,
                           role: "assistant",
                         };
                         setMessages((prev) => [...prev, assistantMessage]);
                         setIsLoading(false);
                         isFirstChunk = false;
-                        accumulatedContent = messageContent;
+                        accumulatedContent = parsedLine.response.message.content;
                       } else {
-                        accumulatedContent += messageContent;
+                        accumulatedContent += parsedLine.response.message.content;
                         setMessages((prev) => {
                           const updatedMessages = [...prev];
                           const lastMessage = updatedMessages[updatedMessages.length - 1];
