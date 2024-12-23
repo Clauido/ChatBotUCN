@@ -76,3 +76,6 @@ urllib3==2.2.3
 uvicorn==0.32.1
 win32-setctime==1.1.0
 yarl==1.18.0
+
+#Auth
+PyJWT==2.10.1

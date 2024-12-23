@@ -13,4 +13,13 @@ UCN_MODEL_NAME=os.getenv('UCN_MODEL_NAME')
 
 OLLAMA_HOST= os.getenv("OLLAMA_HOST")
 OLLAMA_PORT= int(os.getenv("OLLAMA_PORT")) 
+
+JWT_SECRET= os.getenv("JWT_SECRET") or "secret"
+JWT_DURATION= int(os.getenv("JWT_DURATION")) or 2
+
+# Google OAuth2 Credentials
+GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID")
+GOOGLE_CLIENT_SECRET = os.getenv("GOOGLE_CLIENT_SECRET")
+GOOGLE_REDIRECT_URI = os.getenv("GOOGLE_REDIRECT_URI") # Frontend public url
+
 url = f"http://localhost:{OLLAMA_PORT}/api/chat"
