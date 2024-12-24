@@ -26,7 +26,7 @@ app.add_middleware(
 )
 
 # Proteger las rutas mediante un JWT. Asignar rutas desprotegidas mediante unprotected_routes
-jwt_middleware = JWTMiddleware(unprotected_routes=["/auth/login/google", "/auth/callback/google"])
+jwt_middleware = JWTMiddleware(protected_routes=["/chat", "/ws/generate", "/auth/validate"])
 app.add_middleware(BaseHTTPMiddleware, dispatch=jwt_middleware)
 
 @app.post("/chat")
@@ -106,4 +106,4 @@ async def validate(authorization: str = Header(...)):
 
 if __name__ == '__main__':
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=8080)
