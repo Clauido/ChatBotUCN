@@ -102,6 +102,7 @@ export default function ChatBot() {
             responseType: 'text',
             headers: {
               "Content-Type": "application/json",
+              "Authorization": localStorage.getItem("auth")
             },
             onDownloadProgress: (progressEvent) => {
               const responseText = progressEvent.event.target.responseText;
