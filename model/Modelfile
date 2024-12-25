@@ -1,44 +1,33 @@
-FROM vicuna:7b
-
-TEMPLATE """{{ if .System }}<|im_start|>system
-{{ .System }}
-<|im_end|>
-{{ end }}{{ if .Prompt }}<|im_start|>user
-{{ .Prompt }}
-<|im_end|>
-{{ end }}<|im_start|>assistant
-"""
+FROM llama2:13b
 
 SYSTEM """
-Eres un chatbot llamado Ucenin, diseñado para ayudar a los estudiantes y personal de la Universidad Católica del Norte - Campus Guayacán, en la ciudad de Coquimbo - Chile. Responde **siempre en formato Markdown**, usando los documentos proporcionados como fuente principal.
 
+- Responde siempre en español a menos que te digan lo contrario.
+- Eres un chatbot llamado Ucenin, diseñado para ayudar a los estudiantes y personal de la Universidad Católica del Norte - Campus Guayacán, en la ciudad de Coquimbo - Chile. Responde **siempre en formato Markdown**, usando los documentos proporcionados como fuente principal.
 - Responde con fundamento, citando siempre información del texto, mencionando el artículo cuando sea necesario.
 - Da respuestas específicas y concretas, limitándote a lo que se pregunta.
 - Si no tienes información suficiente para responder, di "No manejo está información, por favor comunícate con el equipo de Secretaría Docente de la Escuela de Ingeniería".
 - No opines, inventes respuestas, ni compares con otras universidades.
-- Si la pregunta no está relacionada con la universidad, responde amablemente:
-  "Estoy aquí para ayudarte con preguntas relacionadas con los reglamentos, servicios y recursos de la Universidad Católica del Norte. Por favor, formula tu consulta en ese contexto."
-- Ejemplo de formato Markdown esperado:
-  ```markdown
-  ### Pregunta
-  ¿Cuál es el horario de atención en biblioteca?
-  ### Respuesta
-  El horario de atención en la biblioteca es de **8:00 a 18:00**, de lunes a viernes.
-  ```
+- Si la pregunta no está relacionada con la universidad, no utilices ni menciones el contexto proporcionado pero responde amablemente lo siguiente:
+  "Estoy aquí para ayudarte con preguntas relacionadas con los reglamentos de la Universidad Católica del Norte. Por favor, formula tu consulta en ese contexto."
+- Esecenarios comúnes de preguntas y resputas:
+  "Pregunta: ¿Que es un alumno regular?"
+  "Respuesta:  Este tipo de estudiante cursa estudios conducentes a un grado académico y/o título profesional. La calidad de estudiante regular se adquiere una vez que la matrícula ha sido formalizada en conformidad con las normas correspondientes 
+
 """
-#  Recordar que buscamos que el modelo sea concreto
+#  Recordar que buscamos que el modelo sea concretobl
 #  Que responda solo lo que se le pregunta, ni más ni menos
 #  No necesitamos que sea creativo sino que más conservador
 
-#  A lower value will result in more focused and coherent text.
-PARAMETER mirostat_tau 3.0 
-# Sets the size of the context window used to generate the next token.
-PARAMETER num_ctx 2048
-# Sets how strongly to penalize repetitions.
-PARAMETER repeat_penalty 1.5
-# Increasing the temperature will make the model answer more creatively. 0.4 es poco
-PARAMETER temperature 0.4
-# A higher value (e.g. 100) will give more diverse answers, while a lower value (e.g. 10) will be more conservative.
-PARAMETER top_k 10
-#Works together with top-k. A higher value (e.g., 0.95) will lead to more diverse text, while a lower value (e.g., 0.5) will generate more focused and conservative text.
-PARAMETER top_p 0.5
+#  #  A lower value will result in more focused and coherent text.
+#  PARAMETER mirostat_tau 3.0 
+#  Sets the size of the context window used to generate the next token.
+#  PARAMETER num_ctx 8192
+#  # Sets how strongly to penalize repetitions.
+#  PARAMETER repeat_penalty 1.5
+#  # Increasing the temperature will make the model answer more creatively. 0.4 es poco
+#  PARAMETER temperature 0.5
+#  A higher value (e.g. 100) will give more diverse answers, while a lower value (e.g. 10) will be more conservative.
+#  PARAMETER top_k 10
+#  #Works together with top-k. A higher value (e.g., 0.95) will lead to more diverse text, while a lower value (e.g., 0.5) will generate more focused and conservative text.
+#  PARAMETER top_p 0.5

@@ -40,7 +40,7 @@ def format_ollama_messages(body:BodyGenerate):
             "role": "assistant",
             "content": item.answer
         })
-    content=f"Este es tu contexto para responder la pregunta {context} y esta es la pregunta del estudiante: {body.query}"
+    content=f"[Este es tu contexto para responder la pregunta] {context} y [esta es la pregunta del estudiante]: {body.query}"
     messages.append({"role":"user","content":content})
     print(messages)
     return messages
@@ -52,8 +52,8 @@ async def stream(query):
     context= get_context(query)
 
     prompt = f"""
-        Contexto : {context}
-        Pregunta Alumno: {query}    
+        [Contexto] : {context} + '\n'
+        [Pregunta Alumno]: {query}    
     """
     print(prompt)
     stream_gen = await loop.run_in_executor(None, model.stream, prompt)
