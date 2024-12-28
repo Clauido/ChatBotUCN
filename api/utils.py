@@ -15,7 +15,8 @@ def initialize_retriever():
                 connection=connection,
                 use_jsonb=True,
             )
-    retriever = vector_store.as_retriever(kwargs={"k":2})
+    retriever = vector_store.as_retriever(search_kwargs={"k":2})
+    #k: número de documentos a retornar
     
     return retriever
 
