@@ -3,14 +3,10 @@
 #variables de entorno
 #La base de datos debe de estar cargada y obviamente en ejecución
 
-PG_VECTOR_CONTAINER_ID=1b9
-
-
-
-
+PG_VECTOR_CONTAINER_ID=d4a
 
 SCRIPT_DIR=$(dirname "$0")
-DUMP_DIR="$SCRIPT_DIR./Database"      # Marca de tiempo para el archivo dump
+DUMP_DIR="$SCRIPT_DIR/Dump"      # Marca de tiempo para el archivo dump
 DUMP_FILE="dump.sql"  
 
 

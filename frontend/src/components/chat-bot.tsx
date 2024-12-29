@@ -86,7 +86,7 @@ export default function ChatBot() {
         let isFirstChunk = true;
 
         const response = await axios.post(
-          `${window.API_URL}/chat`,
+          `http://localhost:8000/chat`,
           {
             query: input,
             history: [],

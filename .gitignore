@@ -7,3 +7,5 @@ README.mine.md
 /api/__pycache__
 /mapping/.env
 .vscode
+/Pipe/media/markdown/**/*.jpeg
+**/*.pyc
