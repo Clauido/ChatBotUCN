@@ -5,7 +5,7 @@
 
 ## Reglamento de permanencia
 
-4. ¿Que sucede si un alumno infrinjelas normas de permanencia?
+4. ¿Que sucede si un alumno infrinje las normas de permanencia?
 5. ¿Cuantos tipos de infracciones existen?
 6. ¿Que es una infracciones leve, menos graves y graves?
 7. ¿Cuales son las medidas de sanción por cada una de estas infraccioens?
@@ -18,6 +18,6 @@
 1. ¿Que es un alumno regular?
 2. ¿Que es un alumno egresado?
 3. ¿Que es un alumno titulado?
-4. ¿Que tipo de calida de estudiante se puede tener en la UCN?
+4. ¿Que tipo de calida de estudiante se puede tener en la UCN?|
 5. ¿Explicame el glosario?
 6. ¿

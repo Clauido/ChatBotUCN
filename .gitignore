@@ -5,3 +5,5 @@
 .env
 README.mine.md
 /api/__pycache__
+/mapping/.env
+.vscode
