@@ -92,13 +92,23 @@ export default function ChatBot() {
       setInput("");
       setIsLoading(true);
 
+      const history = messages.reduce((acc, message, index, array) => {
+        if (message.role === "user") {
+          const nextMessage = array[index + 1];
+          if (nextMessage && nextMessage.role === "assistant") {
+            acc.push({ query: message.content, answer: nextMessage.content });
+          }
+        }
+        return acc;
+      }, [] as { query: string; answer: string }[]);
+
       try {
         const response = await fetch("http://localhost:8080/chat", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ query: input, history: [] }),
+          body: JSON.stringify({ query: input, history }),
         });
 
         if (!response.body) throw new Error("No response body");
