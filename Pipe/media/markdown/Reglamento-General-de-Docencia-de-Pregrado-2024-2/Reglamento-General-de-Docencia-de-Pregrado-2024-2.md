@@ -8,22 +8,22 @@ JUNIO 2024
 
 #### ÍNDICE
 
-| TÍTULO | Disposiciones generales |
-| --- |
-| TÍTULO II De la calidad de estudiante . |
-| TÍTULO III Admisión y Matrícula … |
-| TÍTULO IV Estructura y Organización curricular |
-| TÍTULO V Sistema de Créditos Transferibles (SCT). |
+| TÍTULO                                                       | Disposiciones generales |
+| ------------------------------------------------------------ | ----------------------- |
+| TÍTULO II De la calidad de estudiante .                      |
+| TÍTULO III Admisión y Matrícula …                            |
+| TÍTULO IV Estructura y Organización curricular               |
+| TÍTULO V Sistema de Créditos Transferibles (SCT).            |
 | TÍTULO VI Inscripción y renuncia de actividades curriculares |
-| TÍTULO VII Evaluaciones y calificaciones |
-| TÍTULO VIII Asignaturas por Tutoría y Examen |
-| TÍTULO IX Interrupción de estudios . |
-| TÍTULO X Eliminación y Renuncia |
+| TÍTULO VII Evaluaciones y calificaciones                     |
+| TÍTULO VIII Asignaturas por Tutoría y Examen                 |
+| TÍTULO IX Interrupción de estudios .                         |
+| TÍTULO X Eliminación y Renuncia                              |
 | TÍTULO XI Cambios de carrera o de programa y cambios de sede |
-| TÍTULO XII Traslado de Universidad . |
-| TÍTULO XIII Movilidad estudiantil |
-| TÍTULO XV Egreso y Titulación |
-| Artículo transitorio . |
+| TÍTULO XII Traslado de Universidad .                         |
+| TÍTULO XIII Movilidad estudiantil                            |
+| TÍTULO XV Egreso y Titulación                                |
+| Artículo transitorio .                                       |
 
 ![](_page_1_Picture_2.jpeg)
 
@@ -41,7 +41,7 @@ Catálogo de Asignaturas: Asignaturas impartidas en una carrera o programa.
 
 Créditos transferibles: Cuantificación de la carga de trabajo que demanda una actividad curricular al estudiante para el logro de los resultados de aprendizaje.
 
-DPA o Dado Por Aprobado: Sigla del reconocimiento que se entreqa a una asignatura dada por aprobada a causa de cambios en el plan de estudios, calificaciones no numéricas de otras universidades por traslados, entre otras.
+DPA o Dado Por Aprobado: Sigla del reconocimiento que se entrega a una asignatura dada por aprobada a causa de cambios en el plan de estudios, calificaciones no numéricas de otras universidades por traslados, entre otras.
 
 Libro de Calificaciones por Componentes: Acta de calificación de una asignatura o módulo en donde se ingresan las calificaciones.
 
@@ -75,7 +75,7 @@ Es competencia de la Vicerrectoría Académica supervisar el cumplimiento de est
 
 El estudiante de la Universidad Católica del Norte podrá tener la calidad de:
 
-- · Estudiante Reqular.
+- · Estudiante Regular.
 - · Estudiante Egresado/a.
 - · Estudiante de Intercambio saliente (total o parcial).
 - · Estudiante de Intercambio entrante.
@@ -85,7 +85,7 @@ El estudiante de la Universidad Católica del Norte podrá tener la calidad de:
 
 #### Art. 6
 
-Estudiante reqular: Es quien ingresa a través de los procedimientos de admisión, que establece el Título III del presente Reglamento, y adscrito a un programa o carrera determinada, cursa estudios conducentes a un grado académico y/o título profesional. La calidad de estudiante regular de la Universidad Católica del Norte se adquiere una vez que la matrícula ha sido formalizada en conformidad a las normas correspondientes.
+Estudiante regular: Es quien ingresa a través de los procedimientos de admisión, que establece el Título III del presente Reglamento, y adscrito a un programa o carrera determinada, cursa estudios conducentes a un grado académico y/o título profesional. La calidad de estudiante regular de la Universidad Católica del Norte se adquiere una vez que la matrícula ha sido formalizada en conformidad a las normas correspondientes.
 
 #### Art. 7.
 
@@ -95,7 +95,7 @@ Estudiante egresado/a: Corresponde a estudiante regular que ha aprobado las acti
 
 Estudiante de intercambio saliente: Estudiante de la UCN, quien conservando la calidad de estudiante regular, realiza cualquier tipo de actividad académica en otra universidad nacional o extranjera. Se distinguen 2 tipos de intercambio saliente:
 
-- Intercambio Parcial: Cuando en el semestre de intercambio la carqa está 0 distribuida en ambas universidades (origen y destino).
+- Intercambio Parcial: Cuando en el semestre de intercambio la carga está 0 distribuida en ambas universidades (origen y destino).
 - Intercambio Total: Cuando la carga completa del semestre está asociada a la universidad de destino. Esta calidad de estudiante incluye los que se encuentran en programas de doble titulación en una universidad extranjera.
 
 Estudiante de intercambio entrante: Estudiante proveniente de otra universidad nacional o extranjera quien, conservando la calidad de estudiante regular de su universidad de origen, realiza cualquier tipo de actividad académica en la Universidad Católica del Norte. Esta calidad de estudiante incluye a quienes se encuentran en programas de doble titulación procedentes de universidades extranjeras.
@@ -120,27 +120,27 @@ El ingreso como estudiante regular se realiza a través de alguno de los siguien
 
 #### Art. 11.
 
-El estudiantado deberá atenerse al proceso anual de matrícula dentro de los plazos establecidos en el Calendario de actividades docentes. Para conservar la calidad de estudiante reqular, cada estudiante deberá dar cumplimiento a los pagos de matrícula que correspondan. Todo lo anterior, de acuerdo a lo establecido en el Reglamento de matrícula vigente y definido para estos efectos.
+El estudiantado deberá atenerse al proceso anual de matrícula dentro de los plazos establecidos en el Calendario de actividades docentes. Para conservar la calidad de estudiante regular, cada estudiante deberá dar cumplimiento a los pagos de matrícula que correspondan. Todo lo anterior, de acuerdo a lo establecido en el Reglamento de matrícula vigente y definido para estos efectos.
 
 ![](_page_5_Picture_11.jpeg)
 
 ## TITULO IV Estructura y Organización curricular
 
-Art. 12.
+#### Art. 12.
 
 Para efectos del presente reglamento, se definen los siguientes términos:
 
 - a) Perfil de Egreso: declaración de habilidades y competencias terminales para una carrera o programa.
 - b) Plan de estudio: es una explicitación estructurada que define los tiempos y las asignaturas correspondientes a las áreas que forman parte del proceso formativo conducente al logro de perfil de egreso: Ciclo básico, ciclo profesional, Plan de Formación General y Actividad de Titulación o graduación.
 - c) Arquitectura curricular: organización de las actividades curriculares que dan cuenta de la trayectoria formativa, la que contempla:
-	- Definición de Ciclo Básico y Ciclo Profesional. ●
-	- Malla Curricular: Contempla las asignaturas o módulos, o prerrequisitos y la distribución de la carga académica.
-	- Diagrama curricular: Representación gráfica de la malla curricular . de una carrera, en sus relaciones de prerrequisitos y concurrencia de las asignaturas que lo componen: Nombre de las asignaturas o módulos, Carga académica expresada a través del sistema de créditos transferibles SCT), actividades de graduación y/o titulación.
+  - Definición de Ciclo Básico y Ciclo Profesional. ●
+  - Malla Curricular: Contempla las asignaturas o módulos, o prerrequisitos y la distribución de la carga académica.
+  - Diagrama curricular: Representación gráfica de la malla curricular . de una carrera, en sus relaciones de prerrequisitos y concurrencia de las asignaturas que lo componen: Nombre de las asignaturas o módulos, Carga académica expresada a través del sistema de créditos transferibles SCT), actividades de graduación y/o titulación.
 - d) Nivel: Conjunto de asignaturas contenidas en un determinado semestre en el plan de estudios.
 - e) Periodo Académico: Tiempo comprendido entre el inicio y fin del semestre fijado en el calendario de actividades docentes.
 - f) Ciclo: Cada una de las dos etapas secuenciales en el Plan de Estudios (Básico y Profesional).
 
-## Art. 13.
+#### Art. 13.
 
 El ciclo básico contiene un conjunto de cursos y actividades académicas que conforman una secuencia curricular cuyo objetivo es dotar al estudiantado de una formación inicial que proporcionen los fundamentos para las actividades académicas del ciclo Profesional.
 
@@ -148,7 +148,7 @@ El ciclo básico contiene un conjunto de cursos y actividades académicas que co
 
 #### Art. 14.
 
-El ciclo profesional contiene un conjunto de actividades académicas, que permiten al estudiantado alcanzar el perfil de eqreso de la carrera o programa y diversificarse de acuerdo con sus intereses, concentrándose en determinadas áreas de su profesión o qrado académico. El conjunto de actividades obligatorias de este ciclo son necesarias para el desarrollo de la profesión. Las actividades electivas del ciclo profesional, deberán incluir un mínimo de 20 y un máximo de 60 SCT del total de los créditos de la carrera o programa.
+El ciclo profesional contiene un conjunto de actividades académicas, que permiten al estudiantado alcanzar el perfil de egreso de la carrera o programa y diversificarse de acuerdo con sus intereses, concentrándose en determinadas áreas de su profesión o grado académico. El conjunto de actividades obligatorias de este ciclo son necesarias para el desarrollo de la profesión. Las actividades electivas del ciclo profesional, deberán incluir un mínimo de 20 y un máximo de 60 SCT del total de los créditos de la carrera o programa.
 
 #### Art. 15.
 
@@ -157,7 +157,7 @@ El plan de formación general contiene un conjunto de actividades, que vinculada
 Los planes de estudio deberán considerar la siguiente estructura:
 
 - a) Formación en identidad UCN: Contribuye al sello UCN de integridad profesional, promoción del bien común y respeto por la dignidad de la persona, desde el diálogo entre el cristianismo, las culturas y las ciencias.
-- b) Formación General para la Globalización: La cual potencia el aprendizaje del idioma inglés como también el manejo de información en un mundo globalizado. Los programas de las asignaturas se estructuran de manera que el estudiantado desarrolle competencias relacionadas con la comunicación oral y escrita del idioma inglés en situaciones comunicativas predecibles y para tratar información no rutinaria de forma qeneral en diversos temas, a un nivel mínimo de A2 y máximo de B2 de acuerdo al Marco de Referencia Europeo.
+- b) Formación General para la Globalización: La cual potencia el aprendizaje del idioma inglés como también el manejo de información en un mundo globalizado. Los programas de las asignaturas se estructuran de manera que el estudiantado desarrolle competencias relacionadas con la comunicación oral y escrita del idioma inglés en situaciones comunicativas predecibles y para tratar información no rutinaria de forma general en diversos temas, a un nivel mínimo de A2 y máximo de B2 de acuerdo al Marco de Referencia Europeo.
 - c) Formación General Electiva: Esta formación potencia el desarrollo de las competencias genéricas valóricas, académicas y globales según se define en el PEI, y que buscan desarrollar competencias en torno a un área temática de interés académico, cultural o profesional. Las asignaturas de Formación General Electiva serán dictadas por la Dirección General de Pregrado en Antofagasta y la Secretaría de Pregrado y Estudiantil en Coquimbo, pudiendo las unidades académicas contribuir con asignaturas en esta línea.
 
 ![](_page_7_Picture_8.jpeg)
@@ -168,7 +168,7 @@ La actividad de titulación o de graduación es el trabajo académico exigido a 
 
 Las normas específicas para la actividad de titulación o de graduación estarán contenidas en el reglamento de titulación o graduación de la Facultad. Escuela o Unidad dependiente de la Vicerrectoría Académica o de Sede, o en el libro de carrera o programa respectivo.
 
-## Art. 17.
+#### Art. 17.
 
 Cada plan de estudios deberá ser sometido a seguimiento y evaluación permanente por el comité curricular de la carrera o programa conforme a los procedimientos de seguimiento y evaluación del currículo.
 
@@ -178,7 +178,7 @@ El seguimiento del currículo deberá realizarse de forma anual y la evaluación
 - b) Modificaciones mayores al Plan de estudio que no afecten al perfil de egreso de la carrera. Estos cambios deberán ser aprobados primero por el Consejo de Carrera, ratificados por el Consejo de Facultad o de escuela, luego por la Dirección General de Pregrado y finalmente por la Vicerrectoría Académica.
 - c) Rediseños curriculares: Afectan el perfil de egreso de la carrera. Estos cambios deberán ser aprobados primero por el Consejo de carrera, ratificados por el Consejo de Facultad o escuela, luego por la Dirección General de Pregrado y finalmente por la Vicerrectoría Académica.
 
-Los procedimientos para realizar modificaciones menores y mayores estarán requladas a través de un instructivo emanado por la Vicerrectoría Académica.
+Los procedimientos para realizar modificaciones menores y mayores estarán reguladas a través de un instructivo emanado por la Vicerrectoría Académica.
 
 ![](_page_8_Picture_10.jpeg)
 
@@ -205,17 +205,17 @@ El crédito es la expresión cuantitativa de la carga de trabajo académico que 
 
 ## TITULO VI Inscripción y renuncia de actividades curriculares
 
-## Art. 19.
+#### Art. 19.
 
 Las actividades curriculares son aquellas que cada estudiante realiza dentro de un plan de estudios, bajo la supervisión directa de uno o más académicos. designados por la unidad académica responsable. Estas pueden ser: asignaturas, prácticas, seminarios, proyectos de título o grado, memorias y toda otra forma concordante con el plan de estudios.
 
 Estas actividades serán impartidas por las unidades académicas responsables. Su programación se regirá por el calendario de actividades docentes de la Universidad.
 
-## Art. 20
+#### Art. 20
 
 Cada estudiante pertenecerá al nivel en que se ubica la actividad curricular más atrasada que no tenga aprobada.
 
-## Art. 21.
+#### Art. 21.
 
 Cada plan de estudios deberá especificar de manera clara los prerrequisitos asociados a cada asignatura.
 
@@ -245,7 +245,7 @@ Las condiciones para inscribir una actividad curricular son:
 
 El estudiantado no inscrito en una actividad curricular no podrá cursar la asignatura ni optar a calificación alguna.
 
-## Art. 23.
+#### Art. 23.
 
 Cada estudiante podrá inscribir un mínimo de 12 a 30 + 2 créditos transferibles (SCT) por semestre. Los casos que queden fuera de este intervalo, deberán ser autorizados por la jefatura de carrera o programa respectivo, no pudiendo superar los 35 SCT por semestre. Las situaciones especiales derivadas de prácticas o internados profesionales, serán regulados por los reglamentos internos de cada unidad académica.
 
@@ -262,18 +262,18 @@ Cada estudiante podrá renunciar a una o más actividades curriculares durante e
 
 ## TITULO VII Evaluaciones y calificaciones
 
-## Art. 25.
+#### Art. 25.
 
 Toda actividad curricular deberá ser sometida a un proceso de evaluación académica. Los procedimientos evaluativos guardarán una adecuada relación con los resultados de aprendizaje, contenidos y actividades del programa. Podrán realizarse mediante pruebas escritas, interrogaciones orales, informes individuales o de grupo, u otro procedimiento que determine cada docente responsable, según las características propias de la asignatura y de las orientaciones metodológicas dispuestas en el programa de asignatura, y éstas deberán estar alineadas con el Proyecto Educativo Institucional. Todo proceso evaluativo calificado deberá ser acompañado de un instrumento de evaluación tales como rúbricas, pautas, entre otras.
 
-## Art. 26.
+#### Art. 26.
 
 Dentro de las dos primeras semanas de cada periodo académico, el profesorado deberá dar a conocer a los estudiantes, la siguiente información en la plataforma de gestión para el aprendizaje (Campus virtual):
 
 - 1. Programa de la asignatura.
 - 2. Planificación Didáctica
 
-## Art. 27.
+#### Art. 27.
 
 Cada asignatura deberá definir 3 calificaciones parciales como mínimo en su componente principal para ser realizadas durante el semestre, las que deberán ser definidas en el proceso de oferta académica, junto a las fechas de tales evaluaciones. Cualquier excepción deberá ser autorizada por la Dirección General de Pregrado en Antofagasta y la Secretaría de Pregrado y Estudiantil en Coquimbo según corresponda, salvo excepciones explicitadas en el respectivo libro de carrera o programa.
 
@@ -285,7 +285,7 @@ De igual forma, cada estudiante dispondrá de un plazo de 5 (cinco) días hábil
 
 #### Art. 28.
 
-El resultado de las evaluaciones debe ser traducido a la siquiente escala de notas:
+El resultado de las evaluaciones debe ser traducido a la siguiente escala de notas:
 
 - Nota 7,0: Excelente. .
 - Nota entre 6,0 y 6,9: Muy bueno. .
@@ -314,7 +314,7 @@ La nota mínima de aprobación de cada actividad curricular es 4,0 (cuatro coma 
 Como requisito adicional para la aprobación de toda asignatura, cada estudiante deberá cumplir con un porcentaje mínimo de asistencia:
 
 - a) Tratándose de asignaturas del ciclo básico, el porcentaje mínimo de asistencia será determinado por la unidad académica que dicta la asignatura el cual deberá estar especificado en el programa de asignatura. Solo se aceptará rebajar este porcentaje mínimo en caso de enfermedades graves o motivos de fuerza mayor, debidamente acreditados. Con todo, aun en caso de enfermedad grave o motivo de fuerza mayor, el porcentaje mínimo de asistencia no podrá ser inferior a 50% (cincuenta por ciento).
-Tratándose de estudiantes madres o padres debidamente acreditados (MAPAU), que no puedan cumplir el porcentaje de asistencia exigida, u otros casos especiales, se regirán por el instructivo específico para estos efectos.
+  Tratándose de estudiantes madres o padres debidamente acreditados (MAPAU), que no puedan cumplir el porcentaje de asistencia exigida, u otros casos especiales, se regirán por el instructivo específico para estos efectos.
 
 - a) Tratándose de asignaturas de ciclo profesional, la unidad académica respectiva definirá el porcentaje mínimo de asistencia requerida para la aprobación de cada actividad curricular. Esta definición deberá ser especificada en los programas de asignaturas.
 - b) El porcentaje mínimo de asistencia a laboratorios u otras actividades de carácter práctico, será de un 100% (cien por ciento). Sin embargo, en casos excepcionales debidamente acreditados, cada docente responsable de la asignatura, previa comunicación con la jefatura de carrera, evaluará y resolverá alguna situación excepcional.
@@ -325,7 +325,7 @@ Tratándose de estudiantes madres o padres debidamente acreditados (MAPAU), que 
 
 Los estudios aprobados en otras universidades o instituciones equivalentes (universidades extranjeras y universidades o institutos profesionales), que hubiesen sido convalidados conforme a lo establecido en el Título XIV del presente Reglamento, serán calificados con la nota de la institución de origen o según equivalencia UCN.
 
-## Art. 32.
+#### Art. 32.
 
 Estudiantes deberán rendir obligatoriamente todas las evaluaciones en las fechas programadas por cada unidad académica. No obstante, cada docente responsable de la asignatura podrá autorizar excepcionalmente al estudiante a rendir una evaluación en una fecha distinta dentro del periodo académico que corresponda, siempre que lo haya solicitado y que cuente con el visado de su jefatura de carrera, por motivos justificados o por razones de fuerza mayor, debidamente acreditadas.
 
@@ -333,7 +333,7 @@ Toda evaluación no rendida, será calificada con nota 1,0 (uno coma cero), salv
 
 Estudiantes que participen oficialmente en representación de la Universidad, en eventos científicos, culturales, pastorales, deportivos, gremiales o de admisión, tendrán derecho a rendir su evaluación en fecha fijada de común acuerdo con el profesor de la actividad. Para estos efectos, es necesario que la unidad responsable del evento informe de manera formal a la jefatura de carrera para que ésta a su vez proceda a informar al o la docente responsable de la asignatura, con al menos 48 horas de anticipación a la realización del mismo.
 
-## Art. 33.
+#### Art. 33.
 
 Toda asignatura tendrá un Examen de Recuperación, que comprenderá los resultados de aprendizajes del curso y que se programará en el periodo de exámenes, antes del inicio del semestre siguiente, según calendario de actividades docentes.
 
@@ -349,19 +349,23 @@ Las actividades curriculares reprobadas por inasistencia a clases, tendrán una 
 
 Si existiese la necesidad de modificar una nota posterior al cierre del semestre, estos se podrán realizar durante el periodo de rectificación de notas, establecido en el calendario de actividades docentes, por el encargado docente de la unidad.
 
-## Art. 36.
+#### Art. 36.
 
 Se entenderá por Promedio Ponderado Acumulado (PPA) el cociente entre la sumatoria del producto de la nota final de cada asignatura por el número de créditos de ésta, y el total de créditos de todas las asignaturas cursadas.
 
 PPA
 
+$$
+PPA = \frac{\sum_{i=1}^{n}(N_i \cdot C_i)}{\sum_{i=1}^{n} C_i}
+$$
+
 Donde:
 
 n es la cantidad total de asignaturas cursadas.
 
-N; es la calificación final obtenida la última vez que se cursó la asignatura i.
+N_i es la calificación final obtenida la última vez que se cursó la asignatura i.
 
-C; son los créditos SCT de la asignatura i.
+C_i son los créditos SCT de la asignatura i.
 
 Para este cálculo se consideran todas las asignaturas cursadas; es decir, las asignaturas aprobadas y las reprobadas, estas últimas considerando la última vez que fue cursada y sólo mientras no sean aprobadas.
 
@@ -375,7 +379,7 @@ Para este cálculo se consideran todas las asignaturas cursadas; es decir, las a
 
 Tutoría es una actividad curricular de carácter teórica en la que un docente asesora el estudio individual o grupal de un máximo de cinco estudiantes. Se excluyen de esta modalidad asignaturas que tengan componente práctico (taller, laboratorio, prácticas clínicas, etc).
 
-Su régimen es de excepción y debe regirse por el programa de la asignatura. Los requerimientos, resultados de aprendizajes y nivel de exigencia de la tutoría serán los mismos de la asignatura dictada en forma regular. Cada estudiante debe solicitar la tutoría en el Departamento de Gestión académica y curricular en Antofaqasta y en el Departamento de Registro Curricular en Coquimbo, seqún corresponda. La unidad académica que dicta la asignatura, podrá autorizar la inscripción de una asignatura en régimen de tutoría, previo un informe favorable de la jefatura de carrera en relación al o estudiante.
+Su régimen es de excepción y debe regirse por el programa de la asignatura. Los requerimientos, resultados de aprendizajes y nivel de exigencia de la tutoría serán los mismos de la asignatura dictada en forma regular. Cada estudiante debe solicitar la tutoría en el Departamento de Gestión académica y curricular en Antofaqasta y en el Departamento de Registro Curricular en Coquimbo, según corresponda. La unidad académica que dicta la asignatura, podrá autorizar la inscripción de una asignatura en régimen de tutoría, previo un informe favorable de la jefatura de carrera en relación al o estudiante.
 
 ## Art. 38.
 
@@ -399,7 +403,7 @@ Los requisitos para realizar la solicitud son:
 - c) Sólo podrá solicitar una asignatura por semestre en esta modalidad
 - d) Las asignaturas que pueden ser rendidas por examen, estarán indicadas en el libro de carrera o programa respectivo.
 
-La solicitud de examen será presentada por cada estudiante en el departamento de gestión académica y curricular en Antofagasta o en el departamento de reqistro curricular en Coquimbo, según corresponda, en los plazos establecidos en el calendario de actividades docentes. Será resuelta por el Consejo de Carrera o Programa. En caso de tratarse de asignaturas de servicios, será necesaria la consulta a la unidad correspondiente.
+La solicitud de examen será presentada por cada estudiante en el departamento de gestión académica y curricular en Antofagasta o en el departamento de registro curricular en Coquimbo, según corresponda, en los plazos establecidos en el calendario de actividades docentes. Será resuelta por el Consejo de Carrera o Programa. En caso de tratarse de asignaturas de servicios, será necesaria la consulta a la unidad correspondiente.
 
 Los exámenes podrán ser orales, escritos o considerar ambas modalidades. El examen evaluará al estudiantado en estricta relación al programa oficial de la asignatura. Se deberá rendir el examen según las fechas establecidas en el calendario de actividades docentes. La calificación deberá ser ingresada inmediatamente al sistema informático de calificaciones después de rendido el examen.
 
@@ -439,7 +443,7 @@ Al término del retiro temporal, cualquiera fuere el tiempo autorizado, cada est
 
 ![](_page_19_Picture_10.jpeg)
 
-Cada estudiante que se hubiere acoqido a retiro temporal, perderá los derechos que le confiere su calidad de tal, salvo el de renovar su matrícula.
+Cada estudiante que se hubiere acogido a retiro temporal, perderá los derechos que le confiere su calidad de tal, salvo el de renovar su matrícula.
 
 ## Art. 43.
 
@@ -495,7 +499,7 @@ Las solicitudes de reintegro serán resueltas por las siguientes instancias:
 
 - Estudiantes que por primera vez queden eliminados/as por la letra a) del art. 46, resuelve consejo de carrera. Estudiantes que por segunda oportunidad incurran en esta causal, resuelve comisión de casos especiales.
 - Estudiantes que queden eliminados por las letras b) y/o c) del art. 46, resuelve Comisión de casos especiales.
-- Estudiantes que por primera vez queden eliminados/as por la letra d) del art. 46, serán reintegrados automáticamente por el departamento de qestión académica y curricular en Antofagasta y el departamento de registro curricular en Coquimbo. Estudiantes que por segunda oportunidad incurran en esta causal, resuelve el Consejo de carrera.
+- Estudiantes que por primera vez queden eliminados/as por la letra d) del art. 46, serán reintegrados automáticamente por el departamento de gestión académica y curricular en Antofagasta y el departamento de registro curricular en Coquimbo. Estudiantes que por segunda oportunidad incurran en esta causal, resuelve el Consejo de carrera.
 
 Estudiantes que por tercera vez incurran en las causales de eliminación de las letras a) o d), o que por segunda vez incurran en la causal de eliminación de la letra b) o c) del presente artículo, no tendrán derecho a apelación y solo podrán reingresar vía proceso de admisión a las universidades Chilenas.
 
@@ -516,7 +520,7 @@ La Comisión de Casos Especiales, estará conformada en Antofagasta por:
 ![](_page_22_Picture_15.jpeg)
 
 - d) Jefatura de carrera o programa al cual pertenece cada estudiante solicitante, quien integrará la comisión cuando se traten los casos de estudiantes de su carrera o programa. Estos solo tendrán derecho a voz.
-En Coquimbo estará compuesta por:
+  En Coquimbo estará compuesta por:
 
 - a) Secretario/a de Pregrado y Estudiantil de Sede, quien la preside y convoca.
 - b) Secretarios/as docentes o académicos de las facultades o de las escuelas dependientes de la vicerrectoría de sede.
@@ -551,7 +555,7 @@ Se entenderá por cambio de carrera o programa el acto por medio del cual un/una
 
 Los requisitos para solicitar Cambio de Carrera o Programa son:
 
-- a) No estar afecto/a a una causal de pérdida de la calidad de estudiante, seqún lo establecido en el artículo 46 del presente Reglamento.
+- a) No estar afecto/a a una causal de pérdida de la calidad de estudiante, según lo establecido en el artículo 46 del presente Reglamento.
 - b) Contar con una evaluación vocacional favorable, emitida por el Departamento de Éxito Académico.
 - c) Cumplir con los requisitos específicos establecidos por la Unidad Académica respectiva, definidos en la normativa interna correspondiente.
 - d) Para las carreras o programa de Pedagogías deberán cumplir los requisitos específicos de la ley 20.903,establecido por el MINEDUC.
@@ -579,7 +583,7 @@ Los requisitos para solicitar Cambio sede son:
 
 ## Art. 56.
 
-Se entenderá por traslado de universidad al acto en virtud del cual un/a estudiante se cambia de otra universidad acreditada a la Universidad Católica del Norte, con el objeto de prosequir la misma u otra carrera o programa.
+Se entenderá por traslado de universidad al acto en virtud del cual un/a estudiante se cambia de otra universidad acreditada a la Universidad Católica del Norte, con el objeto de proseguir la misma u otra carrera o programa.
 
 ![](_page_25_Picture_10.jpeg)
 
@@ -596,7 +600,7 @@ Se considerará requisito mínimo para presentar la solicitud de traslado, acomp
 
 ## Art. 58.
 
-La solicitud de traslado se realizará sólo una al año, de acuerdo a lo establecido en el calendario de actividades docentes y sequirá su trámite según los procedimientos vigentes para tal efecto, acompañada de los antecedentes indicados en el artículo 57 de este reglamento.
+La solicitud de traslado se realizará sólo una al año, de acuerdo a lo establecido en el calendario de actividades docentes y seguirá su trámite según los procedimientos vigentes para tal efecto, acompañada de los antecedentes indicados en el artículo 57 de este reglamento.
 
 La solicitud de traslado será resuelta por al consejo de carrera o programa respectivo.
 
@@ -634,7 +638,7 @@ La equivalencia requerida para la convalidación debe ser igual o superior al 75
 
 competencias y exigencias, así como el año en que éstas hubiesen sido aprobadas.
 
-Estudiantes que realicen actividades extracurriculares que se encuentren alineadas con el PEI, podrán solicitar la convalidación de éstas por una asignatura de Formación General Electiva de su carrera a través del sistema de trámites curriculares. La Dirección General de Pregrado en Antofagasta y la secretaria de preqrado y estudiantil en Coquimbo según corresponda, evaluarán y resolverán la solicitud.
+Estudiantes que realicen actividades extracurriculares que se encuentren alineadas con el PEI, podrán solicitar la convalidación de éstas por una asignatura de Formación General Electiva de su carrera a través del sistema de trámites curriculares. La Dirección General de Pregrado en Antofagasta y la secretaria de pregrado y estudiantil en Coquimbo según corresponda, evaluarán y resolverán la solicitud.
 
 ## Art. 64.
 
@@ -693,4 +697,3 @@ El académico/a informará del hecho a Dirección o Jefatura del departamento de
 En el caso especial de la carrera de derecho, conservará su calidad de egresado/a hasta ocho (8) semestres posterior a su egreso, plazo en que deberá rendir su examen de grado para la obtención de su licenciatura. Luego de ese tiempo, quedará eliminado/a. Egresados eliminados podrán solicitar su reintegro a la Carrera o Programa en el Departamento. de Gestión Académica y Curricular en Antofagasta y el Departamento de Registro Curricular en Coquimbo, en un plazo máximo de dos (2) semestres desde su eliminación por única vez, en las fechas establecidas en el Calendario de Actividades Docentes. Deberán reintegrarse al último catálogo vigente. Esta norma transitoria rige hasta que no esté en régimen el rediseño curricular de la carrera.
 
 ![](_page_30_Picture_8.jpeg)
-
