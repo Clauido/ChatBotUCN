@@ -49,6 +49,8 @@ Proyección: Asignaturas que puede inscribir el estudiantado cumpliendo con los 
 
 Unidades Académicas: Facultad, Escuela y/o Departamento.
 
+Se entenderá por Promedio Ponderado Acumulado (PPA) el cociente entre la sumatoria del producto de la nota final de cada asignatura por el número de créditos de ésta, y el total de créditos de todas las asignaturas cursadas. PPA $$ PPA = \\frac{\\sum*{i=1}^{n}(N_i \\cdot C_i)}{\\sum*{i=1}^{n} C_i} $$ Donde: n es la cantidad total de asignaturas cursadas. N_i es la calificación final obtenida la última vez que se cursó la asignatura i. C_i son los créditos SCT de la asignatura i. Para este cálculo se consideran todas las asignaturas cursadas; es decir, las asignaturas aprobadas y las reprobadas, estas últimas considerando la última vez que fue cursada y sólo mientras no sean aprobadas.
+
 ![](_page_2_Picture_11.jpeg)
 
 ## TITULO I Disposiciones generales
