@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { ThumbsUp, ThumbsDown, Send } from "lucide-react";
+import axios from "axios";
 import { marked } from "marked";
 
 marked.setOptions({
@@ -92,48 +93,69 @@ export default function ChatBot() {
       setInput("");
       setIsLoading(true);
 
-      const history = messages.reduce((acc, message, index, array) => {
-        if (message.role === "user") {
-          const nextMessage = array[index + 1];
-          if (nextMessage && nextMessage.role === "assistant") {
-            acc.push({ query: message.content, answer: nextMessage.content });
-          }
-        }
-        return acc;
-      }, [] as { query: string; answer: string }[]);
-
       try {
-        const response = await fetch("http://localhost:8080/chat", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
+        let accumulatedContent = "";
+        const processedLines = new Set<string>();
+        let isFirstChunk = true;
+
+        const response = await axios.post(
+          `${window.API_URL}/chat`,
+          {
+            query: input,
+            history: [],
           },
-          body: JSON.stringify({ query: input, history }),
-        });
+          {
+            responseType: "text",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: localStorage.getItem("auth"),
+            },
+            onDownloadProgress: (progressEvent) => {
+              const responseText = progressEvent.event.target.responseText;
+              const lines = responseText.split("\n").filter(Boolean);
 
-        if (!response.body) throw new Error("No response body");
+              try {
+                lines.forEach((line: string) => {
+                  if (!processedLines.has(line)) {
+                    processedLines.add(line);
+                    const parsedLine = JSON.parse(line);
+                    if (parsedLine.response.message.content) {
+                      if (isFirstChunk) {
+                        const assistantMessage: Message = {
+                          id: Date.now().toString(),
+                          content: parsedLine.response.message.content,
+                          role: "assistant",
+                        };
+                        setMessages((prev) => [...prev, assistantMessage]);
+                        setIsLoading(false);
+                        isFirstChunk = false;
+                        accumulatedContent =
+                          parsedLine.response.message.content;
+                      } else {
+                        accumulatedContent +=
+                          parsedLine.response.message.content;
+                        setMessages((prev) => {
+                          const updatedMessages = [...prev];
+                          const lastMessage =
+                            updatedMessages[updatedMessages.length - 1];
+                          if (lastMessage.role === "assistant") {
+                            lastMessage.content = accumulatedContent;
+                          }
+                          return updatedMessages;
+                        });
+                      }
+                    }
+                  }
+                });
+              } catch (error) {
+                console.log(error);
+              }
+            },
+          }
+        );
 
-        setIsLoading(false);
-
-        const reader = response.body.getReader();
-        const decoder = new TextDecoder();
-        let botMessage = "";
-        const botMessageId = Date.now().toString();
-
-        setMessages((prev) => [
-          ...prev,
-          { id: botMessageId, content: "", role: "assistant" },
-        ]);
-
-        while (true) {
-          const { done, value } = await reader.read();
-          if (done) break;
-          botMessage += decoder.decode(value, { stream: true });
-          setMessages((prev) =>
-            prev.map((msg) =>
-              msg.id === botMessageId ? { ...msg, content: botMessage } : msg
-            )
-          );
+        if (response.status !== 200) {
+          console.error("Failed to fetch response");
         }
       } catch (error) {
         console.error("Error during API call:", error);
