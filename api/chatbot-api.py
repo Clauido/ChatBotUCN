@@ -8,7 +8,6 @@ from squeme import WebSocketMessage,BodyGenerate
 from utils import stream,ollam_url,format_ollama_messages,get_context
 from config import UCN_MODEL_NAME
 
-
 app = FastAPI()
 
 # CORS middleware. Restringir acceso antes de producción
